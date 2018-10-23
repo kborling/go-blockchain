@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"Blockchain/controllers"
 	"github.com/gorilla/mux"
+	"go-blockchain/controllers"
 )
 
 // Creates routes for getting and writing to the blockchain

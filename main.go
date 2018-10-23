@@ -1,10 +1,10 @@
 package main
 
 import (
-	"Blockchain/controllers"
-	"Blockchain/routes"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	"go-blockchain/controllers"
+	"go-blockchain/routes"
 	"log"
 	"net/http"
 	"os"

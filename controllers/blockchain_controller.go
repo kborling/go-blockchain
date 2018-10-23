@@ -1,11 +1,11 @@
 package controllers
 
 import (
-	"Blockchain/models"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
 	"github.com/davecgh/go-spew/spew"
+	"go-blockchain/models"
 	"io"
 	"net/http"
 	"time"
@@ -24,7 +24,7 @@ func NewBlockchainController() *BlockchainController {
 	// Get current time
 	t := time.Now()
 	// Create Genesis Block
-	blockchain.GenesisBlock = models.Block{
+	genesisBlock := models.Block{
 		Index:     0,
 		Timestamp: t.String(),
 		Data:      "",
@@ -33,7 +33,7 @@ func NewBlockchainController() *BlockchainController {
 	}
 
 	// Append Genesis Block to Blockchain
-	blockchain.Blocks = append(blockchain.Blocks, blockchain.GenesisBlock)
+	blockchain.Blocks = append(blockchain.Blocks, genesisBlock)
 	// Return new blockchain controller
 	return &BlockchainController{
 		Blockchain: blockchain,
@@ -99,8 +99,6 @@ func (bc *BlockchainController) HandleGetBlockchain(w http.ResponseWriter, r *ht
 	}
 	io.WriteString(w, string(bytes))
 }
-
-
 
 // Handler for writing to the blockchain
 func (bc *BlockchainController) HandleWriteBlock(w http.ResponseWriter, r *http.Request) {
